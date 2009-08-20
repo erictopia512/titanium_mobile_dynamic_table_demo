@@ -1,0 +1,16 @@
+<html>
+<body>
+	<script>
+		var b = Titanium.UI.createButton({
+			systemButton:Titanium.UI.iPhone.SystemButton.DONE
+		});
+		b.addEventListener('click',function()
+		{
+			Titanium.UI.currentWindow.close();
+		})
+		Titanium.UI.currentWindow.setLeftNavButton(b);
+		document.title = Titanium.App.Properties.getString("title");
+		document.write(Titanium.App.Properties.getString("tip"));
+	</script>
+</body>
+</html>

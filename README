@@ -1,0 +1,56 @@
+Titanium Mobile 
+Dynamic Table View Demo
+================================
+
+This demo will show you how to create a Titanium Mobile application that will
+use a remote web service to fetch JSON data and then display the data dynamically
+in a native TableView.  
+
+Each fetch will only bring back a small number of rows (7 by default) and if 
+there are more rows in the DB, will return a more flag.  The app will determine,
+based on the more flag in JSON result, if the a more row should be created.
+
+When the "More..." button is pushed, the app will dynamically load additional rows
+until there are no more rows available from the server.
+
+This demo also shows how you can dynamically update your table views (both add, set
+and delete) as well as switch between a titled row view and an HTML row view.
+
+-----------------
+To run this demo:
+-----------------
+
+Currently, this demo uses a simple PHP service and MySQL database to load a set of 
+quotes from the data (paginated) and return as JSON.
+
+1) Copy php/index.php into your PHP directory. For example, in OSX, you could place in 
+   your ~/Sites directory.  You can then access this URL via:
+   http://localhost/~<your_username>/
+
+2) Edit the index.js to provide the URL to your web service.
+
+3) Create a MySQL Database named: table_test
+
+4) Edit your index.php file and make sure the username/password is correct and hostname
+   to your MySQL server.
+
+4) Load the test data into your DB. For example:
+
+   > mysql -u root table_test < sql/load.sql
+
+5) Now, import this project in Titanium Developer.
+
+6) Run the project in the simulator.  You should see a list of rows.
+
+
+----------------------------------
+Stuff our legal folk make us say:
+
+Appcelerator, Appcelerator Titanium and associated marks and logos are 
+trademarks of Appcelerator, Inc. 
+
+Titanium is Copyright (c) 2009 by Appcelerator, Inc. All Rights Reserved.
+
+Titanium and this code is licensed under the Apache Public License (Version 2). Please
+see the LICENSE.txt file for the full license.
+
