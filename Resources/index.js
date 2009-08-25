@@ -1,7 +1,6 @@
 // TODO: set this URL to your test webservice
 var URL = "http://localhost/";
 
-
 window.onload = function()
 {
 	// create an activity indicator that will show will we fetch
@@ -27,6 +26,10 @@ window.onload = function()
 	function fetchRows()
 	{
 		var xhr = Titanium.Network.createHTTPClient();
+		// Work around for missing onload function in Android 0.6.2 and earlier.
+		if (xhr.onload == undefined) {
+			xhr.onreadystatechange = function() { if (this.readyState == 4) { this.onload(); }};
+		}
 		xhr.onload = function()
 		{
 			// convert the response JSON text into a JavaScript object
@@ -71,6 +74,8 @@ window.onload = function()
 				Titanium.UI.currentWindow.showView(tableView);
 				// record the initial count
 				count = rows.length;
+				// hide the indicator
+				ind.hide();
 			}
 			// after we fetch the page, increment 
 			page++;
